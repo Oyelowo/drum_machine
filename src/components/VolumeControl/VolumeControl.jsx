@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const VolumeControl = () => {
+const VolumeControl = (props) => {
     return <input
         id="vol-control"
         name="volume"
@@ -8,9 +8,7 @@ const VolumeControl = () => {
         min="0"
         max="1"
         step="0.1"
-        va
-        oninput="SetVolume(this.value)"
-        onchange="SetVolume(this.value)"
+        oninput=""
         {...props}></input>
 
 }
