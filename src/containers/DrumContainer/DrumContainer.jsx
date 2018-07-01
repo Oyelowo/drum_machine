@@ -24,7 +24,7 @@ class DrumContainer extends Component {
     render() {
         const {volumeValue} = this.state;
         return (
-            <div>
+            <div d="drum-machine">
                 <audio
                     id='audio'
                     src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>

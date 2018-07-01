@@ -5,7 +5,7 @@ import DrumContainer from './containers/DrumContainer/DrumContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App" id="drum-machine">
         <DrumContainer/>
       </div>
     );
