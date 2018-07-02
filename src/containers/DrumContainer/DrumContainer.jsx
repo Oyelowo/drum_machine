@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import VolumeControl from '../../components/VolumeControl/VolumeControl';
-import Pad from '../../components/Pad/Pad';
-
+import DrumPad from '../../components/Pad/DrumPad';
+import Display from '../../components/Display/Display';
+import { connect } from "react-redux";
 class DrumContainer extends Component {
     state = {
         volumeValue: ''
@@ -17,7 +18,7 @@ class DrumContainer extends Component {
 
     playSound = () => {
         let audio = document.getElementById('audio');
-        audio.load()
+        // audio.load()
         audio.play();
     }
 
@@ -30,11 +31,19 @@ class DrumContainer extends Component {
                     src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
                 <button onClick={this.playSound}>Play</button>
-                <Pad onClick={this.playSound}>Kick</Pad>
-                <h1>{volumeValue}</h1>
+                <Display/>
+                <DrumPad onClick={this.playSound}>Kick</DrumPad>
+                <h1>{(volumeValue*100).toFixed(0)}</h1>
             </div>
         )
     }
 }
 
-export default DrumContainer;
+const mapStateToProps=state=>{
+   return {
+       kitsStore1: state.kitsStore1,
+       kitsStore2: state.kitsStore2
+   }
+}
+
+export default connect(mapStateToProps)(DrumContainer);

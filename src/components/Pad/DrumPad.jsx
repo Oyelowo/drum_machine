@@ -1,5 +1,5 @@
 import React from 'react';
-import './Pad.css';
+import './DrumPad.css';
 
 const Pad = (props) => {
   return (
