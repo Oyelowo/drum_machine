@@ -33,7 +33,7 @@ class DrumMachine extends Component {
             })
         return (
             <div id="drum-machine">
-                <Display>{this.props.clickedKey}
+                <Display>{this.props.clickedKey.replace(/-/g, ' ')}
                 </Display>
                 <hr/>
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}

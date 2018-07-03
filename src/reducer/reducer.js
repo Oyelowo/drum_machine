@@ -32,7 +32,7 @@ const initalState = {
         url: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3'
     }, {
         keyTrigger: 'Z',
-        id: "Kick-n'-Hat",
+        id: "Kick-&-Hat",
         url: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3'
     }, {
         keyTrigger: 'X',

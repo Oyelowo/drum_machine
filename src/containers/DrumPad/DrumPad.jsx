@@ -10,20 +10,21 @@ class DrumPad extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', (event) => this.keyPlaySound(event, this.props.id, this.props.audioTriggerKey, this.props.audioVolume));
+    document.addEventListener('keydown',  this.keyPlaySound);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', (event) => this.keyPlaySound(event, this.props.id, this.props.audioTriggerKey, this.props.audioVolume));
+    document.removeEventListener('keydown',  this.keyPlaySound);
   }
 
-  keyPlaySound = (event, id, audioTriggerKey, volume) => {
+  keyPlaySound = (event) => {
+    const {id, audioTriggerKey, audioVolume, drumName} = this.props
     // convert char to code
     let codeFromChar = (audioTriggerKey).charCodeAt()
     if (event.keyCode === codeFromChar) {
       this
         .props
-        .onPlaySound(id, volume);
+        .onPlaySound(id, audioVolume, drumName);
     }
   }
 
