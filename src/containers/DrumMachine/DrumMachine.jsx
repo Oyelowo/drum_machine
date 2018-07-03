@@ -9,6 +9,9 @@ class DrumMachine extends Component {
         volumeValue: 0
     }
 
+    volumeChangeHandler = (event) => {
+        this.setState({volumeValue: event.target.value})
+    }
     render() {
 
         const {volumeValue} = this.state;
@@ -19,6 +22,7 @@ class DrumMachine extends Component {
             .map(kit => {
                 return (
                     <DrumPad
+                        audioVolume={volumeValue}
                         btnClass='drum-pad'
                         audioClass='clip'
                         key={kit.keyTrigger}

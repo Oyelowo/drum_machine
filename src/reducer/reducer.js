@@ -1,5 +1,7 @@
 import * as actionTypes from '../store/actions/actionTypes';
-import {updateObject} from '../shared/utility';
+import {
+    updateObject
+} from '../shared/utility';
 
 const initalState = {
     clickedKey: '',
@@ -86,12 +88,12 @@ const playSound = (state, action) => {
     let audio = document.getElementById(action.id);
     audio.currentTime = 0;
     audio.play();
+    audio.volume = action.audioVolume
     return updateObject(state, {
-        clickedKey : action.id
+        clickedKey: action.id
     })
-
-
 }
+
 
 const reducer = (state = initalState, action) => {
     switch (action.type) {

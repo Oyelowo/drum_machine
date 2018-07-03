@@ -9,20 +9,20 @@ class DrumPad extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.keyPlaySound);
+    document.addEventListener('keydown', (event) => this.keyPlaySound(event, this.props.id, this.props.audioTriggerKey, this.props.audioVolume));
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keyPlaySound);
+    document.removeEventListener('keydown', (event) => this.keyPlaySound(event, this.props.id, this.props.audioTriggerKey, this.props.audioVolume));
   }
 
-  keyPlaySound = (event) => {
+  keyPlaySound = (event, id, audioTriggerKey, volume) => {
     // convert char to code
-    let codeFromChar = (this.props.audioTriggerKey).charCodeAt()
+    let codeFromChar = (audioTriggerKey).charCodeAt()
     if (event.keyCode === codeFromChar) {
       this
         .props
-        .onPlaySound(this.props.id);
+        .onPlaySound(id, volume);
     }
   }
 
@@ -32,7 +32,7 @@ class DrumPad extends Component {
     return (
       <button
         className={this.props.btnClass}
-        onClick={() => this.props.onPlaySound(this.props.id)}>
+        onClick={() => this.props.onPlaySound(this.props.id, this.props.audioVolume)}>
         {this.props.children}
         <audio
           className={this.props.audioClass}
@@ -46,7 +46,7 @@ class DrumPad extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlaySound: (id) => dispatch(actions.playSound(id))
+    onPlaySound: (id, audioVolume) => dispatch(actions.playSound(id, audioVolume))
   }
 }
 

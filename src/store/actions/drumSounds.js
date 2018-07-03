@@ -1,8 +1,10 @@
 import * as actionTypes from './actionTypes';
 
-export const playSound=(id)=>{
-    return{
+export const playSound = (id, audioVolume) => {
+    return {
         type: actionTypes.PLAY_SOUND,
-        id: id
+        id: id,
+        audioVolume: audioVolume
     }
 }
+
