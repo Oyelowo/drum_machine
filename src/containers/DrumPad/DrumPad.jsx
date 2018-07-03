@@ -15,18 +15,18 @@ class DrumPad extends Component {
     // convert char to code
     let codeFromChar = (this.props.audioTriggerKey).charCodeAt()
     if (event.keyCode === codeFromChar) {
-      this.playSound();
+      this.playSound(this.props.id);
     }
   }
 
-  playSound = () => {
-    let audio = document.getElementById(this.props.id);
+  playSound = (id) => {
+    let audio = document.getElementById(id);
     audio.currentTime = 0;
     audio.play();
   }
   render() {
     return (
-      <button onClick={this.playSound}>
+      <button onClick={() => this.playSound(this.props.id)}>
         <audio {...this.props}></audio>
         {this.props.children}
       </button>
