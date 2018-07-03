@@ -6,7 +6,7 @@ import VolumeControl from '../../components/VolumeControl/VolumeControl';
 
 class DrumMachine extends Component {
     state = {
-        volumeValue: 0
+        volumeValue: 0.2
     }
 
     volumeChangeHandler = (event) => {
