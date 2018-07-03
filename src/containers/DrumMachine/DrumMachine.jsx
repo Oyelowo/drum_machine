@@ -23,8 +23,6 @@ class DrumMachine extends Component {
                 return (
                     <DrumPad
                         audioVolume={volumeValue}
-                        btnClass='drum-pad'
-                        audioClass='clip'
                         key={kit.keyTrigger}
                         id={kit.keyTrigger}
                         src={kit.url}

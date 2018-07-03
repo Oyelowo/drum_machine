@@ -29,14 +29,14 @@ class DrumPad extends Component {
   // playSound = (id) => {   let audio = document.getElementById(id);
   // audio.currentTime = 0;   audio.play();   this.setState({clickedKey: id}) }
   render() {
-    const {btnClass,onPlaySound, id, audioVolume, children, audioClass, src}= this.props
+    const {onPlaySound, id, audioVolume, children, src}= this.props
     return (
       <button
-        className={btnClass}
+        className='drum-pad'
         onClick={() => onPlaySound(id, audioVolume)}>
         {children}
         <audio
-          className={audioClass}
+          className='clip'
           id={id}
           src={src}></audio>
 
