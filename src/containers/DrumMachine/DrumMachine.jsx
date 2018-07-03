@@ -27,12 +27,13 @@ class DrumMachine extends Component {
                         key={kit.keyTrigger}
                         id={kit.keyTrigger}
                         src={kit.url}
-                        audioTriggerKey={kit.keyTrigger}></DrumPad>
+                        audioTriggerKey={kit.keyTrigger}
+                        drumName={kit.id}></DrumPad>
                 )
             })
         return (
             <div id="drum-machine">
-                <Display>{this.props.clickedKey} 
+                <Display>{this.props.clickedKey}
                 </Display>
                 <hr/>
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}

@@ -90,7 +90,7 @@ const playSound = (state, action) => {
     audio.play();
     audio.volume = action.audioVolume
     return updateObject(state, {
-        clickedKey: action.audioId
+        clickedKey: action.drumName
     })
 }
 

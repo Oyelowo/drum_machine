@@ -2,6 +2,7 @@ import './DrumPad.css';
 import React, {Component} from 'react';
 import * as actions from '../../store/actions/index';
 import {connect} from 'react-redux';
+import Auxi from '../../hoc/Auxi';
 
 class DrumPad extends Component {
   state = {
@@ -29,25 +30,24 @@ class DrumPad extends Component {
   // playSound = (id) => {   let audio = document.getElementById(id);
   // audio.currentTime = 0;   audio.play();   this.setState({clickedKey: id}) }
   render() {
-    const {onPlaySound, drumPadId, id, audioVolume, src}= this.props
+    const {drumName, onPlaySound, drumPadId, id, audioVolume, src} = this.props
     return (
-      <button
-      id={drumPadId}
-        className='drum-pad'
-        onClick={() => onPlaySound(id, audioVolume)}>
-        {id}
-        <audio
-          className='clip'
-          id={id}
-          src={src}></audio>
-      </button>
+      <Auxi>
+        <button
+          id={drumPadId}
+          className='drum-pad'
+          onClick={() => onPlaySound(id, audioVolume, drumName)}>
+          {id}
+          <audio className='clip' id={id} src={src}></audio>
+        </button>
+      </Auxi>
     )
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlaySound: (audioId, volume) => dispatch(actions.playSound(audioId, volume))
+    onPlaySound: (audioId, volume, drumName) => dispatch(actions.playSound(audioId, volume, drumName))
   }
 }
 
