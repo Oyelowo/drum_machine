@@ -5,7 +5,7 @@ import Display from '../../components/Display/Display';
 import {connect} from "react-redux";
 class DrumContainer extends Component {
     state = {
-        volumeValue: ''
+        volumeValue: 0
     }
 
     componentDidMount() {
@@ -31,15 +31,19 @@ class DrumContainer extends Component {
     // componentDidMount(){     let audio = document.getElementById('audio');
     // audio.load(); }
     volumeChangeHandler = (event) => {
-        let audio = document.getElementsByTagName('audio');
-        audio.volume = event.target.value;
+        let audios = document.getElementsByTagName('audio');
+        // console.log(audios)
+        for(let audio of audios){
+            audio.volume = event.target.value;
+        }
+        
         this.setState({volumeValue: event.target.value})
     }
 
     playSound = (id) => {
         let audio = document.getElementById(id);
+        audio.volume = this.state.volumeValue
         // console.log(audio)
-        audio.load()
         audio.currenTime = 0;
         audio.play();
     }
@@ -55,10 +59,10 @@ class DrumContainer extends Component {
 
                 return (
                     <DrumPad
-                        key={kit.keyCode}
+                        key={kit.keyTrigger}
                         onClick={() => this.playSound(kit.id)}
                         className={kit.id}>{kit.keyTrigger}
-                        <audio volume={volumeValue} id={kit.id} className={kit.id} src={kit.url}></audio>
+                        <audio id={kit.id} className={kit.id} src={kit.url}></audio>
                     </DrumPad>
                 )
             })
