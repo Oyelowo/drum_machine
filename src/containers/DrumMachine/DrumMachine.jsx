@@ -22,17 +22,17 @@ class DrumMachine extends Component {
             .map(kit => {
                 return (
                     <DrumPad
+                        drumPadId={kit.id}
                         audioVolume={volumeValue}
                         key={kit.keyTrigger}
-                        id={kit.id}
+                        id={kit.keyTrigger}
                         src={kit.url}
-                        audioTriggerKey={kit.keyTrigger}>
-                        {kit.keyTrigger}</DrumPad>
+                        audioTriggerKey={kit.keyTrigger}></DrumPad>
                 )
             })
         return (
             <div id="drum-machine">
-                <Display>{this.props.clickedKey} {`${ (volumeValue * 100).toFixed()}%`}
+                <Display>{this.props.clickedKey} 
                 </Display>
                 <hr/>
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}

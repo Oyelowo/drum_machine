@@ -85,12 +85,12 @@ const initalState = {
 }
 
 const playSound = (state, action) => {
-    let audio = document.getElementById(action.id);
+    let audio = document.getElementById(action.audioId);
     audio.currentTime = 0;
     audio.play();
     audio.volume = action.audioVolume
     return updateObject(state, {
-        clickedKey: action.id
+        clickedKey: action.audioId
     })
 }
 

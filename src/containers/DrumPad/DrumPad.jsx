@@ -29,27 +29,25 @@ class DrumPad extends Component {
   // playSound = (id) => {   let audio = document.getElementById(id);
   // audio.currentTime = 0;   audio.play();   this.setState({clickedKey: id}) }
   render() {
-    const {onPlaySound, id, audioVolume, children, src}= this.props
+    const {onPlaySound, drumPadId, id, audioVolume, src}= this.props
     return (
-      <div>
       <button
+      id={drumPadId}
         className='drum-pad'
         onClick={() => onPlaySound(id, audioVolume)}>
-        {children}
+        {id}
         <audio
           className='clip'
           id={id}
           src={src}></audio>
-
       </button>
-      </div>
     )
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlaySound: (id, volume) => dispatch(actions.playSound(id, volume))
+    onPlaySound: (audioId, volume) => dispatch(actions.playSound(audioId, volume))
   }
 }
 
