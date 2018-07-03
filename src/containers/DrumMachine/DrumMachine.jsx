@@ -32,13 +32,10 @@ class DrumMachine extends Component {
             })
         return (
             <div id="drum-machine">
-              
-                {KeysSound}
-                <Display>{this.props.clickedKey}
-                {/* {`${(volumeValue * 100).toFixed()}%`} */}
+                <Display>{this.props.clickedKey} {`${ (volumeValue * 100).toFixed()}%`}
                 </Display>
                 <hr/>
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
+                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}
             </div>
         );
     }
