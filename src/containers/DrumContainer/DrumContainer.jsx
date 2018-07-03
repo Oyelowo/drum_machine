@@ -8,6 +8,26 @@ class DrumContainer extends Component {
         volumeValue: ''
     }
 
+    componentDidMount() {
+        // let audio = document.getElementsByTagName('audio');
+        // console.log(audio.item(1).volume); console.log(this.props)
+        document.addEventListener('keydown', this.keyPlaySound)
+
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.keyPlaySound)
+    }
+
+    keyPlaySound = (event) => {
+        for (let el of this.props.kitsStore1) {
+            //   console.log(el)
+            // convert String to char
+            let keyChar = (el.keyTrigger).charCodeAt()
+            if (event.keyCode === keyChar) {
+                this.playSound(el.id);
+            }
+        }
+    }
     // componentDidMount(){     let audio = document.getElementById('audio');
     // audio.load(); }
     volumeChangeHandler = (event) => {
@@ -18,27 +38,27 @@ class DrumContainer extends Component {
 
     playSound = (id) => {
         let audio = document.getElementById(id);
-        console.log(audio)
+        // console.log(audio)
         audio.load()
         audio.currenTime = 0;
         audio.play();
     }
 
     render() {
-        let audio = document.getElementById('Heater-1');
-        console.log(audio)
+
         const {volumeValue} = this.state;
 
         let KeysSound = this
             .props
             .kitsStore1
             .map(kit => {
+
                 return (
-                    <DrumPad key={kit.keyCode} onClick={()=>this.playSound(kit.id)} className={kit.id}>{kit.keyTrigger}
-                        <audio
-                            id={kit.id}
-                            className={kit.id}
-                            src={kit.url}></audio>
+                    <DrumPad
+                        key={kit.keyCode}
+                        onClick={() => this.playSound(kit.id)}
+                        className={kit.id}>{kit.keyTrigger}
+                        <audio volume={volumeValue} id={kit.id} className={kit.id} src={kit.url}></audio>
                     </DrumPad>
                 )
             })
