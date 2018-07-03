@@ -19,6 +19,8 @@ class DrumMachine extends Component {
             .map(kit => {
                 return (
                     <DrumPad
+                        btnClass='drum-pad'
+                        audioClass='clip'
                         key={kit.keyTrigger}
                         id={kit.keyTrigger}
                         src={kit.url}
@@ -29,17 +31,17 @@ class DrumMachine extends Component {
         return (
             <div id="drum-machine">
 
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {/* <button onClick={this.playSound}>Play</button> */}
-                <Display/>
-                <h1>{(volumeValue * 100).toFixed(0) + '%'}</h1>
+                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
+                <Display>{this.props.clickedKey}
+                </Display>
                 {KeysSound}
             </div>
-        )
+        );
     }
 }
 
 const mapStateToProps = state => {
-    return {kitsStore1: state.kitsStore1, kitsStore2: state.kitsStore2}
+    return {kitsStore1: state.kitsStore1, kitsStore2: state.kitsStore2, clickedKey: state.clickedKey}
 }
 
 export default connect(mapStateToProps)(DrumMachine);

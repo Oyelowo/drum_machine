@@ -1,4 +1,8 @@
+import * as actionTypes from '../store/actions/actionTypes';
+import {updateObject} from '../shared/utility';
+
 const initalState = {
+    clickedKey: '',
     kitsStore1: [{
         keyTrigger: 'Q',
         id: 'Heater-1',
@@ -78,11 +82,23 @@ const initalState = {
 
 }
 
+const playSound = (state, action) => {
+    let audio = document.getElementById(action.id);
+    audio.currentTime = 0;
+    audio.play();
+    return updateObject(state, {
+        clickedKey : action.id
+    })
 
+
+}
 
 const reducer = (state = initalState, action) => {
     switch (action.type) {
-        default: return state;
+        case actionTypes.PLAY_SOUND:
+            return playSound(state, action);
+        default:
+            return state;
     }
 }
 

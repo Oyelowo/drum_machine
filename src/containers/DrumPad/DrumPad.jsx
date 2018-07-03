@@ -1,7 +1,12 @@
 import './DrumPad.css';
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import * as actions from '../../store/actions/index';
+import {connect} from 'react-redux';
 
 class DrumPad extends Component {
+  state = {
+    clickedKey: ''
+  }
 
   componentDidMount() {
     document.addEventListener('keydown', this.keyPlaySound);
@@ -15,23 +20,34 @@ class DrumPad extends Component {
     // convert char to code
     let codeFromChar = (this.props.audioTriggerKey).charCodeAt()
     if (event.keyCode === codeFromChar) {
-      this.playSound(this.props.id);
+      this
+        .props
+        .onPlaySound(this.props.id);
     }
   }
 
-  playSound = (id) => {
-    let audio = document.getElementById(id);
-    audio.currentTime = 0;
-    audio.play();
-  }
+  // playSound = (id) => {   let audio = document.getElementById(id);
+  // audio.currentTime = 0;   audio.play();   this.setState({clickedKey: id}) }
   render() {
     return (
-      <button onClick={() => this.playSound(this.props.id)}>
-        <audio {...this.props}></audio>
+      <button
+        className={this.props.btnClass}
+        onClick={() => this.props.onPlaySound(this.props.id)}>
         {this.props.children}
+        <audio
+          className={this.props.audioClass}
+          id={this.props.id}
+          src={this.props.src}></audio>
+
       </button>
     )
   }
 }
 
-export default DrumPad;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onPlaySound: (id) => dispatch(actions.playSound(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DrumPad);
