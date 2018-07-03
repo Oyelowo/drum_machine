@@ -24,7 +24,7 @@ class DrumMachine extends Component {
                     <DrumPad
                         audioVolume={volumeValue}
                         key={kit.keyTrigger}
-                        id={kit.keyTrigger}
+                        id={kit.id}
                         src={kit.url}
                         audioTriggerKey={kit.keyTrigger}>
                         {kit.keyTrigger}</DrumPad>
@@ -32,11 +32,12 @@ class DrumMachine extends Component {
             })
         return (
             <div id="drum-machine">
-
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
-                <Display>{this.props.clickedKey}
-                </Display>
+              
                 {KeysSound}
+                <Display>{this.props.clickedKey}
+                {`${(volumeValue * 100).toFixed()}%`}
+                </Display>
+                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
             </div>
         );
     }

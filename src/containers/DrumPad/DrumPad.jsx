@@ -31,6 +31,7 @@ class DrumPad extends Component {
   render() {
     const {onPlaySound, id, audioVolume, children, src}= this.props
     return (
+      <div>
       <button
         className='drum-pad'
         onClick={() => onPlaySound(id, audioVolume)}>
@@ -41,6 +42,7 @@ class DrumPad extends Component {
           src={src}></audio>
 
       </button>
+      </div>
     )
   }
 }
