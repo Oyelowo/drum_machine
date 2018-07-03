@@ -47,7 +47,7 @@ class DrumPad extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPlaySound: (audioId, volume, drumName) => dispatch(actions.playSound(audioId, volume, drumName))
+    onPlaySound: (audioId, audioVolume, drumName) => dispatch(actions.playSound(audioId, audioVolume, drumName))
   }
 }
 
