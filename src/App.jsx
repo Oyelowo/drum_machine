@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
+import DrumMachine from './containers/DrumMachine/DrumMachine';
 import './App.css';
-import DrumContainer from './containers/DrumContainer/DrumContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App" id="drum-machine">
-        <DrumContainer/>
+        <DrumMachine />
       </div>
     );
   }
