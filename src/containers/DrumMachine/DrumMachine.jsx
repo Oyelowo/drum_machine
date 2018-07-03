@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Display from '../../components/Display/Display';
 import DrumPad from '../DrumPad/DrumPad';
 import VolumeControl from '../../components/VolumeControl/VolumeControl';
+import './DrumMachine.css'
 
 class DrumMachine extends Component {
     state = {
@@ -33,7 +34,7 @@ class DrumMachine extends Component {
             })
         return (
             <div id="drum-machine">
-                <Display>{this.props.clickedKey.replace(/-/g, ' ')}
+                <Display>{this.props.clickedDrum.replace(/-/g, ' ')}
                 </Display>
                 <hr/>
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}
@@ -43,7 +44,7 @@ class DrumMachine extends Component {
 }
 
 const mapStateToProps = state => {
-    return {kitsStore1: state.kitsStore1, kitsStore2: state.kitsStore2, clickedKey: state.clickedKey}
+    return {kitsStore1: state.kitsStore1, kitsStore2: state.kitsStore2, clickedDrum: state.clickedKey}
 }
 
 export default connect(mapStateToProps)(DrumMachine);

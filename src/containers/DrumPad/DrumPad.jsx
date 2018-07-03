@@ -10,11 +10,11 @@ class DrumPad extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown',  this.keyPlaySound);
+    document.addEventListener('keydown', this.keyPlaySound);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown',  this.keyPlaySound);
+    document.removeEventListener('keydown', this.keyPlaySound);
   }
 
   keyPlaySound = (event) => {
@@ -31,7 +31,14 @@ class DrumPad extends Component {
   // playSound = (id) => {   let audio = document.getElementById(id);
   // audio.currentTime = 0;   audio.play();   this.setState({clickedKey: id}) }
   render() {
-    const {drumName, onPlaySound, drumPadId, id, audioVolume, src} = this.props
+    const {
+      drumName,
+      onPlaySound,
+      drumPadId,
+      id,
+      audioVolume,
+      src
+    } = this.props
     return (
       <Auxi>
         <button
