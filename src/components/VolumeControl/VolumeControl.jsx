@@ -1,4 +1,5 @@
 import React from 'react';
+import './VolumeControl.css';
 
 const VolumeControl = (props) => {
     return <input

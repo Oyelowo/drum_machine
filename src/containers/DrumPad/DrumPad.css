@@ -1,7 +1,8 @@
-button{
+button {
     padding: 20px;
 }
 
-button:hover{
+button:hover {
     background: coral;
 }
+

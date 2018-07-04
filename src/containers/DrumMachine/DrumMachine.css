@@ -1,6 +1,16 @@
-#drum-machine{
-    min-width: 60vw;
+.DrumMachine{
+    width: 60vw;
     min-height: 60vh;
     margin: 20vh auto;
     border: 1px red solid;
 }
+
+.keysContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid blue;
+    grid-gap: 10px;
+    padding: 20px;
+    margin-top: 40px;
+}
+

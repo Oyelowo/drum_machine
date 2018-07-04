@@ -33,11 +33,13 @@ class DrumMachine extends Component {
                 )
             })
         return (
-            <div id="drum-machine">
-                <Display>{this.props.clickedDrum.replace(/-/g, ' ')}
+            <div id="drum-machine" className='DrumMachine'>
+                <Display>{this.props.clickedDrum.replace(/-/g, ' ')} 
+                <span>{`${(volumeValue * 100).toFixed(0)}  %`}</span>
                 </Display>
                 <hr/>
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> {KeysSound}
+                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> 
+                <div className='keysContainer'>{KeysSound}</div>
             </div>
         );
     }
