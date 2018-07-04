@@ -8,6 +8,7 @@
     background: #dddddd;
     color: grey;
     opacity: 0.8;
+    cursor: not-allowed;
   }
   
   /* code modified to personal tase. source: http://danielstern.ca/range.css/#/ */
