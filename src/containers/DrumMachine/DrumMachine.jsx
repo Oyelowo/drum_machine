@@ -35,13 +35,18 @@ class DrumMachine extends Component {
         let volume = isPowerOn
             ? `Volume: ${ (volumeValue * 100).toFixed(0)} %`
             : '';
-            
 
-            let kitStoreDisplay;
+        let kitStoreDisplay;
+        let SoundType;
         if (isPowerOn) {
             kitStoreDisplay = kitsStoreValue === '1'
                 ? 'kits Store One'
                 : 'kits Store Two'
+
+            SoundType = this
+                .props
+                .clickedDrum
+                .replace(/-/g, ' ')
         }
         let kitsStore = kitsStoreValue === '1'
             ? this.props.kitsStore1
@@ -114,10 +119,7 @@ class DrumMachine extends Component {
                     <div className='Toolbar'>
                         <span>SoundType:</span>
                         <span className='infoDisplay'>
-                            {this
-                                .props
-                                .clickedDrum
-                                .replace(/-/g, ' ')}</span>
+                            {SoundType}</span>
                     </div>
 
                 </Display>
