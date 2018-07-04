@@ -51,7 +51,7 @@ class DrumMachine extends Component {
             return (
                 <DrumPad
                     drumPadId={kit.id}
-                    audioVolume={volume}
+                    audioVolume={volumeValue}
                     key={kit.keyTrigger}
                     id={kit.keyTrigger}
                     src={kit.url}
