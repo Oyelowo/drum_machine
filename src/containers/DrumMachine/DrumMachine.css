@@ -6,12 +6,14 @@ body {
 
 .DrumMachine {
     max-width: 45vw;
-    height: 80vh;
+    min-height: 85vh;
     /* min-height: 60vh; */
     margin: 5vh auto;
     border-radius: 20px;
-    background: grey;
-    opacity: 0.9;
+    background: url('https://images.pexels.com/photos/1791/vintage-music-white-sound.jpg?auto=compress&cs=tinysrgb&h=350');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* opacity: 0.9; */
     position: relative;
 }
 
@@ -21,7 +23,7 @@ body {
     width: 40%;
     grid-gap: 10px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .Toolbar {
@@ -35,7 +37,7 @@ body {
     display: inline-block;
     position: absolute;
     top: 0;
-    right: calc(75vw/4);
+    right: calc(75vw/20);
     /* border: 1px solid red; */
     /* padding: 20px; */
 }
