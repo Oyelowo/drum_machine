@@ -5,13 +5,14 @@ import DrumPad from '../DrumPad/DrumPad';
 import VolumeControl from '../../components/VolumeControl/VolumeControl';
 import './DrumMachine.css'
 import Switch from '../../components/Switch/Switch';
+import PowerIndicator from '../../UI/PowerIndicator/PowerIndicator';
 
 class DrumMachine extends Component {
     state = {
         volumeValue: 0.4,
         powerValue: 0,
-        powerOn: false,
-        kitsStoreValue: 1
+        isPowerOn: false,
+        kitsStoreValue: '1'
     }
 
     volumeChangeHandler = (event) => {
@@ -21,7 +22,7 @@ class DrumMachine extends Component {
     powerChangeHandler = (event) => {
         this.setState({
             powerValue: event.target.value,
-            powerOn: !this.state.powerOn
+            isPowerOn: !this.state.isPowerOn
         })
     }
 
@@ -30,16 +31,13 @@ class DrumMachine extends Component {
     }
     render() {
 
-        const {volumeValue, powerValue, powerOn, kitsStoreValue} = this.state;
-        let power = !powerOn
-            ? 'off'
-            : '0n';
+        const {volumeValue, powerValue, isPowerOn, kitsStoreValue} = this.state;
 
-        let volume = powerOn
+        let volume = isPowerOn
             ? volumeValue
             : 0;
 
-        let kitStoreDisplay = kitsStoreValue == 1
+        let kitStoreDisplay = kitsStoreValue === '1'
             ? 'kits Store One'
             : 'kits Store Two'
         let kitsStore = kitsStoreValue === '1'
@@ -66,17 +64,14 @@ class DrumMachine extends Component {
                     name='powerSwitch'
                     value={powerValue}
                     onChange={this.powerChangeHandler}/>
+
                 <Display>
-                    <div>{power}</div>
-                    {this
+                    <PowerIndicator powerOn={isPowerOn}/> {this
                         .props
                         .clickedDrum
                         .replace(/-/g, ' ')}
                     <span>{`${ (volumeValue * 100).toFixed(0)}  %`}</span>
-                    <div>{this
-                            .state
-                            .powerOn
-                            .toString()}</div>
+                    <div>{isPowerOn.toString()}</div>
 
                     <div>{kitStoreDisplay}</div>
                 </Display>

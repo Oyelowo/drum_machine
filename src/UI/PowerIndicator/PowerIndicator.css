@@ -1,0 +1,13 @@
+.PowerOn {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 100%
+}
+
+.PowerOff {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 100%;
+}
