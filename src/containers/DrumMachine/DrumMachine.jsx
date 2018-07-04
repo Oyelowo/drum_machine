@@ -30,7 +30,6 @@ class DrumMachine extends Component {
         this.setState({kitsStoreValue: event.target.value})
     }
 
-    
     render() {
         const {volumeValue, powerValue, isPowerOn, kitsStoreValue} = this.state;
         let volume = isPowerOn
@@ -57,39 +56,54 @@ class DrumMachine extends Component {
                     drumName={kit.id}></DrumPad>
             )
         })
-        
+
         return (
             <div id="drum-machine" className='DrumMachine'>
-                <Switch
-                    min="0"
-                    max="1"
-                    step="1"
-                    name='powerSwitch'
-                    value={powerValue}
-                    onChange={this.powerChangeHandler}/>
 
                 <Display>
-                    <PowerIndicator powerOn={isPowerOn}/> 
-                    {this
-                        .props
-                        .clickedDrum
-                        .replace(/-/g, ' ')}
-                    <span>{`${ (volumeValue * 100).toFixed(0)}  %`}</span>
-                    <div>{isPowerOn.toString()}</div>
+                    <div className='Toolbar Power'>
+                        <div>Switch</div>
+                        <Switch
+                            type='range'
+                            min="0"
+                            max="1"
+                            step="1"
+                            name='powerSwitch'
+                            value={powerValue}
+                            onChange={this.powerChangeHandler}/>
 
-                    <div>{kitStoreDisplay}</div>
+                        <PowerIndicator className='infoDisplay' powerOn={isPowerOn}/></div>
+
+                    <div className='Toolbar KitStore'>
+                        <div>Drum Kits Stores</div>
+                        <Switch
+                            name='KitStoreSwitch'
+                            value={this.state.kitsStoreValue}
+                            min='1'
+                            max='2'
+                            step='1'
+                            onChange={this.switchKitStoreHandler}/>
+                        <span className='infoDisplay'>{kitStoreDisplay}</span>
+                    </div>
+
+                    <div className='Toolbar'>
+
+                       <span> <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/></span>
+
+                        <span className='infoDisplay'>{`Volume: ${ (volumeValue * 100).toFixed(0)} %`}</span>
+                    </div>
+
+                    <div className='Toolbar'>
+                        <span>SoundType:</span>
+                        <span className='infoDisplay'>
+                            {this
+                                .props
+                                .clickedDrum
+                                .replace(/-/g, ' ')}</span>
+                    </div>
+
                 </Display>
-                <hr/>
 
-                <Switch
-                    name='KitStoreSwitch'
-                    value={this.state.kitsStoreValue}
-                    min='1'
-                    max='2'
-                    step='1'
-                    onChange={this.switchKitStoreHandler}/>
-
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
                 <div className='keysContainer'>{KeysSound}</div>
             </div>
         );

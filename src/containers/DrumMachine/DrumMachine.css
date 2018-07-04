@@ -1,24 +1,83 @@
+body {
+    font-size: 1.4rem;
+    font-weight: bolder;
+    font-style: italic;
+}
 
-.DrumMachine{
-    width: 45vw;
-    min-height: 60vh;
-    margin: 10vh auto;
-    border: 1px red solid;
+.DrumMachine {
+    max-width: 45vw;
+    height: 80vh;
+    /* min-height: 60vh; */
+    margin: 5vh auto;
     border-radius: 20px;
-    background: gold;
+    background: grey;
     opacity: 0.9;
-    
- }
- 
-	
+    position: relative;
+}
 
 .keysContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 40%;
-    border: 1px solid blue;
     grid-gap: 10px;
-   margin: 100px;
-    /* margin-top: 40px; */
+    margin: auto;
+    margin-top: 40px;
 }
 
+.Toolbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 33px 0 0 20px;;
+}
+
+.Power {
+    padding: 25px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: calc(75vw/4);
+    /* border: 1px solid red; */
+    /* padding: 20px; */
+}
+
+.KitStore {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    width: 30%;
+    justify-items: center;
+    padding-top: 30px;
+}
+
+
+
+.infoDisplay {
+    margin-left: 10px;
+    background: black;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 34px;
+    /* height: 20px; */
+    height: 30px;
+}
+
+@media(max-width: 768px){
+    body{
+        font-size: 90%;
+        padding: 0;
+    }
+    .DrumMachine{
+        min-width: 90vw;
+        margin: 0 auto;
+    }
+
+    .keysContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 30%;
+        grid-gap: 10px;
+        margin: auto;
+        margin-top: 10px;
+    }
+}
