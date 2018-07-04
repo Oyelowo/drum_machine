@@ -4,7 +4,7 @@ import './Switch.css';
 const Switch = (props) => {
     return (
         <div>
-            <input  className='Switch' type="range" min="0" max="1" step="1" {...props}/>
+            <input  className='Switch' type="range" {...props}/>
         </div>
     )
 }

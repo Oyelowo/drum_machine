@@ -10,7 +10,8 @@ class DrumMachine extends Component {
     state = {
         volumeValue: 0.4,
         powerValue: 0,
-        powerOn: false
+        powerOn: false,
+        kitsStoreValue: 1
     }
 
     volumeChangeHandler = (event) => {
@@ -18,34 +19,53 @@ class DrumMachine extends Component {
     }
 
     powerChangeHandler = (event) => {
-        this.setState({powerValue: event.target.value, powerOn: !this.state.powerOn})
+        this.setState({
+            powerValue: event.target.value,
+            powerOn: !this.state.powerOn
+        })
+    }
+
+    switchKitStoreHandler = (event) => {
+        this.setState({kitsStoreValue: event.target.value})
     }
     render() {
 
-        const {volumeValue, powerValue, powerOn} = this.state;
+        const {volumeValue, powerValue, powerOn, kitsStoreValue} = this.state;
         let power = !powerOn
             ? 'off'
             : '0n';
-            
-            let volume = powerOn ? volumeValue : 0;
-        let KeysSound = this
-            .props
-            .kitsStore1
-            .map(kit => {
-                return (
-                    <DrumPad
-                        drumPadId={kit.id}
-                        audioVolume={volume}
-                        key={kit.keyTrigger}
-                        id={kit.keyTrigger}
-                        src={kit.url}
-                        audioTriggerKey={kit.keyTrigger}
-                        drumName={kit.id}></DrumPad>
-                )
-            })
+
+        let volume = powerOn
+            ? volumeValue
+            : 0;
+
+        let kitStoreDisplay = kitsStoreValue == 1
+            ? 'kits Store One'
+            : 'kits Store Two'
+        let kitsStore = kitsStoreValue === '1'
+            ? this.props.kitsStore1
+            : this.props.kitsStore2
+        let KeysSound = kitsStore.map(kit => {
+            return (
+                <DrumPad
+                    drumPadId={kit.id}
+                    audioVolume={volume}
+                    key={kit.keyTrigger}
+                    id={kit.keyTrigger}
+                    src={kit.url}
+                    audioTriggerKey={kit.keyTrigger}
+                    drumName={kit.id}></DrumPad>
+            )
+        })
         return (
             <div id="drum-machine" className='DrumMachine'>
-                <Switch name='powerSwitch' value={powerValue} onChange={this.powerChangeHandler}/>
+                <Switch
+                    min="0"
+                    max="1"
+                    step="1"
+                    name='powerSwitch'
+                    value={powerValue}
+                    onChange={this.powerChangeHandler}/>
                 <Display>
                     <div>{power}</div>
                     {this
@@ -53,11 +73,23 @@ class DrumMachine extends Component {
                         .clickedDrum
                         .replace(/-/g, ' ')}
                     <span>{`${ (volumeValue * 100).toFixed(0)}  %`}</span>
-                    <div>{this.state.powerOn.toString()}</div>
+                    <div>{this
+                            .state
+                            .powerOn
+                            .toString()}</div>
+
+                    <div>{kitStoreDisplay}</div>
                 </Display>
                 <hr/>
 
-                <Switch name='KitStoreSwitch' />
+                <Switch
+                    name='KitStoreSwitch'
+                    value={this.state.kitsStoreValue}
+                    min='1'
+                    max='2'
+                    step='1'
+                    onChange={this.switchKitStoreHandler}/>
+
                 <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
                 <div className='keysContainer'>{KeysSound}</div>
             </div>
