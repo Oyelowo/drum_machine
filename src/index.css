@@ -7,6 +7,10 @@ body {
   background-size: 100vw 100vh;
 }
 
+input:disabled {
+  background: #dddddd;
+}
+
 /* source: http://danielstern.ca/range.css/#/ */
 input[type=range] {
   -webkit-appearance: none;

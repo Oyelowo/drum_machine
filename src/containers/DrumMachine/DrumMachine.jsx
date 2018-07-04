@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import Display from '../../components/Display/Display';
 import DrumPad from '../DrumPad/DrumPad';
-import VolumeControl from '../../components/VolumeControl/VolumeControl';
 import './DrumMachine.css'
 import Switch from '../../components/Switch/Switch';
 import PowerIndicator from '../../UI/PowerIndicator/PowerIndicator';
@@ -32,14 +31,18 @@ class DrumMachine extends Component {
 
     render() {
         const {volumeValue, powerValue, isPowerOn, kitsStoreValue} = this.state;
+
         let volume = isPowerOn
-            ? volumeValue
-            : 0;
+            ? `Volume: ${ (volumeValue * 100).toFixed(0)} %`
+            : '';
+            
 
-        let kitStoreDisplay = kitsStoreValue === '1'
-            ? 'kits Store One'
-            : 'kits Store Two'
-
+            let kitStoreDisplay;
+        if (isPowerOn) {
+            kitStoreDisplay = kitsStoreValue === '1'
+                ? 'kits Store One'
+                : 'kits Store Two'
+        }
         let kitsStore = kitsStoreValue === '1'
             ? this.props.kitsStore1
             : this.props.kitsStore2
@@ -56,6 +59,8 @@ class DrumMachine extends Component {
                     drumName={kit.id}></DrumPad>
             )
         })
+
+        // let inputDisabled= isPowerOn ? 'disabled' : null
 
         return (
             <div id="drum-machine" className='DrumMachine'>
@@ -77,6 +82,7 @@ class DrumMachine extends Component {
                     <div className='Toolbar KitStore'>
                         <div>Drum Kits Stores</div>
                         <Switch
+                            inputdisabled={(!isPowerOn).toString()}
                             name='KitStoreSwitch'
                             value={this.state.kitsStoreValue}
                             min='1'
@@ -88,9 +94,21 @@ class DrumMachine extends Component {
 
                     <div className='Toolbar'>
 
-                       <span> <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/></span>
+                        <span>
+                            <Switch
+                                inputdisabled={(!isPowerOn).toString()}
+                                id="vol-control"
+                                style={{
+                                width: '100%'
+                            }}
+                                name="volume"
+                                min="0"
+                                max="1"
+                                step="0.01"
+                                value={volumeValue}
+                                onChange={this.volumeChangeHandler}/></span>
 
-                        <span className='infoDisplay'>{`Volume: ${ (volumeValue * 100).toFixed(0)} %`}</span>
+                        <span className='infoDisplay'>{volume}</span>
                     </div>
 
                     <div className='Toolbar'>
