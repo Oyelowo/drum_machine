@@ -1,9 +1,12 @@
+
 .DrumMachine{
     width: 45vw;
     min-height: 60vh;
-    margin: 20vh auto;
+    margin: 10vh auto;
     border: 1px red solid;
     border-radius: 20px;
+    background: gold;
+    opacity: 0.9;
     
  }
  
