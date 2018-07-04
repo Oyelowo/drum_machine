@@ -4,7 +4,7 @@ button {
     height: 100%; */
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background: coral;
 }
 

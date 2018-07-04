@@ -1,16 +1,17 @@
 body {
-    font-size: 1.4rem;
-    font-weight: bolder;
-    font-style: italic;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: rgb(167, 48, 48);
+    /* font-style: italic; */
 }
 
 .DrumMachine {
     max-width: 45vw;
     min-height: 85vh;
     /* min-height: 60vh; */
-    margin: 5vh auto;
+    margin: auto;
     border-radius: 20px;
-    background: url('https://images.pexels.com/photos/1791/vintage-music-white-sound.jpg?auto=compress&cs=tinysrgb&h=350');
+    background: url('../../assets/images/music_record_player_bgd.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     /* opacity: 0.9; */
@@ -29,7 +30,8 @@ body {
 .Toolbar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 33px 0 0 20px;;
+    margin: 33px 0 0 20px;
+    ;
 }
 
 .Power {
@@ -51,30 +53,42 @@ body {
     padding-top: 30px;
 }
 
-
-
 .infoDisplay {
     margin-left: 10px;
-    background: black;
-    color: white;
+    background: rgb(29, 22, 22);
+    color: rgb(243, 214, 234);
     padding: 12px;
     text-align: center;
     border-radius: 34px;
     /* height: 20px; */
     height: 30px;
     width: 100%;
+    font-size: 1.7rem;
 }
 
-@media(max-width: 768px){
-    body{
-        font-size: 90%;
+a {
+    text-decoration: none;
+    color: rgb(76, 16, 116);
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+footer{
+    margin-top: 60px;
+    text-align: center;
+}
+
+@media(max-width: 768px) {
+    body {
+        font-size: 1.5rem;
         padding: 0;
     }
-    .DrumMachine{
+    .DrumMachine {
         min-width: 90vw;
         margin: 0 auto;
     }
-
     .keysContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
