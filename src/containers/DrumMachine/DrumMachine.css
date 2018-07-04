@@ -4,7 +4,10 @@ body {
     color: rgb(167, 48, 48);
     /* font-style: italic; */
 }
-
+#note{
+    position: relative;
+    top: 35px;
+}
 .DrumMachine {
     max-width: 45vw;
     min-height: 85vh;
@@ -50,7 +53,7 @@ body {
     grid-gap: 10px;
     width: 30%;
     justify-items: center;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .infoDisplay {
@@ -88,6 +91,7 @@ footer{
     .DrumMachine {
         min-width: 90vw;
         margin: 0 auto;
+        height: auto;
     }
     .keysContainer {
         display: grid;

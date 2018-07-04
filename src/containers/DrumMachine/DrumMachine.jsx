@@ -127,6 +127,8 @@ class DrumMachine extends Component {
                 </Display>
 
                 <div className='keysContainer'>{KeysSound}</div>
+
+                <div id='note'>You can also play with your keyboard!</div>
                 <footer>Coded by: <a target='_blank' rel="noopener noreferrer" href="https://www.linkedin.com/in/oyelowo-oyedayo/">Oyelowo Oyedayo</a></footer>
             </div>
         );
