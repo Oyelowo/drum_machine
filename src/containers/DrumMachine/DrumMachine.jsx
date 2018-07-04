@@ -4,19 +4,30 @@ import Display from '../../components/Display/Display';
 import DrumPad from '../DrumPad/DrumPad';
 import VolumeControl from '../../components/VolumeControl/VolumeControl';
 import './DrumMachine.css'
+import Switch from '../../components/Switch/Switch';
 
 class DrumMachine extends Component {
     state = {
-        volumeValue: 0.2
+        volumeValue: 0.4,
+        powerValue: 0,
+        powerOn: false
     }
 
     volumeChangeHandler = (event) => {
         this.setState({volumeValue: event.target.value})
     }
+
+    powerChangeHandler = (event) => {
+        this.setState({powerValue: event.target.value, powerOn: !this.state.powerOn})
+    }
     render() {
 
-        const {volumeValue} = this.state;
-
+        const {volumeValue, powerValue, powerOn} = this.state;
+        let power = !powerOn
+            ? 'off'
+            : '0n';
+            
+            let volume = powerOn ? volumeValue : 0;
         let KeysSound = this
             .props
             .kitsStore1
@@ -24,7 +35,7 @@ class DrumMachine extends Component {
                 return (
                     <DrumPad
                         drumPadId={kit.id}
-                        audioVolume={volumeValue}
+                        audioVolume={volume}
                         key={kit.keyTrigger}
                         id={kit.keyTrigger}
                         src={kit.url}
@@ -34,11 +45,20 @@ class DrumMachine extends Component {
             })
         return (
             <div id="drum-machine" className='DrumMachine'>
-                <Display>{this.props.clickedDrum.replace(/-/g, ' ')} 
-                <span>{`${(volumeValue * 100).toFixed(0)}  %`}</span>
+                <Switch name='powerSwitch' value={powerValue} onChange={this.powerChangeHandler}/>
+                <Display>
+                    <div>{power}</div>
+                    {this
+                        .props
+                        .clickedDrum
+                        .replace(/-/g, ' ')}
+                    <span>{`${ (volumeValue * 100).toFixed(0)}  %`}</span>
+                    <div>{this.state.powerOn.toString()}</div>
                 </Display>
                 <hr/>
-                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/> 
+
+                <Switch name='KitStoreSwitch' />
+                <VolumeControl value={volumeValue} onChange={this.volumeChangeHandler}/>
                 <div className='keysContainer'>{KeysSound}</div>
             </div>
         );
