@@ -1,5 +1,7 @@
 button {
     padding: 20px;
+    /* width: 80px;
+    height: 100%; */
 }
 
 button:hover {

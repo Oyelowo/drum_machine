@@ -1,16 +1,21 @@
 .DrumMachine{
-    width: 60vw;
+    width: 45vw;
     min-height: 60vh;
     margin: 20vh auto;
     border: 1px red solid;
-}
+    border-radius: 20px;
+    
+ }
+ 
+	
 
 .keysContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    width: 40%;
     border: 1px solid blue;
     grid-gap: 10px;
-    padding: 20px;
-    margin-top: 40px;
+   margin: 100px;
+    /* margin-top: 40px; */
 }
 
