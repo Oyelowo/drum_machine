@@ -29,10 +29,10 @@ class DrumMachine extends Component {
     switchKitStoreHandler = (event) => {
         this.setState({kitsStoreValue: event.target.value})
     }
+
+    
     render() {
-
         const {volumeValue, powerValue, isPowerOn, kitsStoreValue} = this.state;
-
         let volume = isPowerOn
             ? volumeValue
             : 0;
@@ -40,9 +40,11 @@ class DrumMachine extends Component {
         let kitStoreDisplay = kitsStoreValue === '1'
             ? 'kits Store One'
             : 'kits Store Two'
+
         let kitsStore = kitsStoreValue === '1'
             ? this.props.kitsStore1
             : this.props.kitsStore2
+
         let KeysSound = kitsStore.map(kit => {
             return (
                 <DrumPad
@@ -55,6 +57,7 @@ class DrumMachine extends Component {
                     drumName={kit.id}></DrumPad>
             )
         })
+        
         return (
             <div id="drum-machine" className='DrumMachine'>
                 <Switch
@@ -66,7 +69,8 @@ class DrumMachine extends Component {
                     onChange={this.powerChangeHandler}/>
 
                 <Display>
-                    <PowerIndicator powerOn={isPowerOn}/> {this
+                    <PowerIndicator powerOn={isPowerOn}/> 
+                    {this
                         .props
                         .clickedDrum
                         .replace(/-/g, ' ')}
