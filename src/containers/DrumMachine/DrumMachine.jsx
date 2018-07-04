@@ -61,7 +61,9 @@ class DrumMachine extends Component {
                     id={kit.keyTrigger}
                     src={kit.url}
                     audioTriggerKey={kit.keyTrigger}
-                    drumName={kit.id}></DrumPad>
+                    drumName={kit.id}
+                    disabled={!isPowerOn}
+                    ></DrumPad>
             )
         })
 

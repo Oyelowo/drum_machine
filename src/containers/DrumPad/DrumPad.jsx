@@ -39,12 +39,14 @@ class DrumPad extends Component {
       audioVolume,
       src
     } = this.props
+  
     return (
       <Auxi>
         <button
           id={drumPadId}
           className='drum-pad'
-          onClick={() => onPlaySound(id, audioVolume, drumName)}>
+          onClick={() => onPlaySound(id, audioVolume, drumName)}
+          disabled={this.props.disabled}>
           {id}
           <audio className='clip' id={id} src={src}></audio>
         </button>
