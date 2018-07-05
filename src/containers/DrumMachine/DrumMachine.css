@@ -11,14 +11,13 @@ body {
 .DrumMachine {
     max-width: 45vw;
     min-height: 85vh;
-    /* min-height: 60vh; */
     margin: auto;
+    margin-top: 22px;
     border-radius: 20px;
     background: url('../../assets/images/music_record_player_bgd.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: relative;
-    margin-top: 10px;
 }
 
 .keysContainer {
