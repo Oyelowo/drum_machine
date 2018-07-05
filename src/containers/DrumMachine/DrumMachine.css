@@ -5,8 +5,8 @@ body {
     /* font-style: italic; */
 }
 #note{
-    position: relative;
-    top: 35px;
+    margin-top: 20px;
+    text-align: center;
 }
 .DrumMachine {
     max-width: 45vw;
