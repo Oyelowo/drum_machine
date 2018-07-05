@@ -13,7 +13,9 @@ class DrumMachine extends Component {
         isPowerOn: false,
         kitsStoreValue: '1'
     }
-
+componentDidMount(){
+   setTimeout(()=> this.setState({isPowerOn: true, powerValue: 1, kitsStoreValue: '2'}), 2000)
+}
     volumeChangeHandler = (event) => {
         this.setState({volumeValue: event.target.value})
     }
