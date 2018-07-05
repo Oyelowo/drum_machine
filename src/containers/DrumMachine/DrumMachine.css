@@ -4,10 +4,7 @@ body {
     color: rgb(167, 48, 48);
     /* font-style: italic; */
 }
-#note{
-    margin-top: 20px;
-    text-align: center;
-}
+
 .DrumMachine {
     max-width: 45vw;
     min-height: 85vh;
@@ -74,11 +71,16 @@ a:hover {
     opacity: 0.8;
 }
 
+#note{
+    margin-top: 20px;
+    text-align: center;
+}
+
 footer{
-    /* margin-top: 60px; */
-    position: absolute;
-    bottom: 0;
-    right:33%;
+    margin-top: 20px;
+    /* position: absolute;
+    bottom: 0; */
+    /* right:33%; */
     text-align: center;
 }
 
