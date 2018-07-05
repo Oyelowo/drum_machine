@@ -70,7 +70,7 @@ class DrumMachine extends Component {
         // let inputDisabled= isPowerOn ? 'disabled' : null
 
         return (
-            <div id="drum-machine" className='DrumMachine'>
+            <div id="drum-machine" className='DrumMachine animated bounceIn'>
 
                 <Display>
                     <div className='Toolbar Power'>

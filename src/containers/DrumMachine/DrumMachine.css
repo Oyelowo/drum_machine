@@ -1,5 +1,5 @@
 body {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     font-weight: 800;
     color: rgb(167, 48, 48);
     /* font-style: italic; */
@@ -17,28 +17,26 @@ body {
     background: url('../../assets/images/music_record_player_bgd.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    /* opacity: 0.9; */
     position: relative;
+    margin-top: 10px;
 }
 
 .keysContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 40%;
-    grid-gap: 10px;
+    max-width: 40%;
+    grid-gap: 7px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .Toolbar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 33px 0 0 20px;
-    ;
+    margin: 10px 0 0 20px;
 }
 
 .Power {
-    padding: 25px;
     display: inline-block;
     position: absolute;
     top: 0;
@@ -50,10 +48,9 @@ body {
 .KitStore {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 10px;
     width: 30%;
     justify-items: center;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 .infoDisplay {
@@ -66,7 +63,7 @@ body {
     /* height: 20px; */
     height: 30px;
     width: 100%;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 
 a {
@@ -79,13 +76,16 @@ a:hover {
 }
 
 footer{
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    position: absolute;
+    bottom: 0;
+    right:33%;
     text-align: center;
 }
 
 @media(max-width: 768px) {
     body {
-        font-size: 1.5rem;
+        font-size: 1rem;
         padding: 0;
     }
     .DrumMachine {
@@ -96,9 +96,11 @@ footer{
     .keysContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        width: 30%;
-        grid-gap: 10px;
-        margin: auto;
-        margin-top: 10px;
+        max-width: 30%;
+        justify-content: center;
+    }
+
+    .infoDisplay{
+        font-size: 1.3rem;
     }
 }
